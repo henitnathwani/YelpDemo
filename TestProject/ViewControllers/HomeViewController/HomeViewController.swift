@@ -27,11 +27,6 @@ class HomeViewController: BaseViewController {
             self.performSegue(withIdentifier: Segue.ToBusinessDetailsScreen, sender: selectedBusiness)
         }
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         // GET LOCATION
         LocationService.shared.getLocation { (currentLocation, locationPermissionState) in
             
@@ -41,15 +36,15 @@ class HomeViewController: BaseViewController {
             guard locationPermissionState == .ready else {
                 return
             }
-
+            
             // SET MAP REGION
             self.mapViewBusinesses.adjustZoomscale(forLocation: currentLocation!)
-
+            
             // CLEAR ANNOTATIONS
             self.mapViewBusinesses.removeAnnotations(self.mapViewBusinesses.getAllAnnotationExceptCurrentLocation())
-
+            
             // GET BUSINESSES FROM YELP
-            let yelpCoordinate:YLPCoordinate = YLPCoordinate(latitude: currentLocation!.latitude, longitude: currentLocation!.longitude) 
+            let yelpCoordinate:YLPCoordinate = YLPCoordinate(latitude: currentLocation!.latitude, longitude: currentLocation!.longitude)
             ServiceManager.shared.getSearchResult(fromCoordinate: yelpCoordinate) { (arrBusiness) in
                 for businessToDisplay in arrBusiness {
                     let annotation = Annotation(withBusinessInfo: businessToDisplay)
@@ -57,6 +52,12 @@ class HomeViewController: BaseViewController {
                 }
             }
         }
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     //MARK: NAVIGATION

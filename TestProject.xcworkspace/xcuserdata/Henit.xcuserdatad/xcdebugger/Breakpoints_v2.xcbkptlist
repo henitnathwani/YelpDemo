@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestProject/Utils/DatabaseManager/DatabaseManager.swift"
-            timestampString = "532323987.710879"
+            timestampString = "532325300.840161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "save(bussinesses:onCompletion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestProject/Controls/MapView/MapView.swift"
-            timestampString = "532323987.7116"
+            timestampString = "532325300.864125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -48,11 +48,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestProject/AppDelegate.swift"
-            timestampString = "532323987.712245"
+            timestampString = "532325300.86471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
