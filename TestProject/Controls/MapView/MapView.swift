@@ -17,6 +17,7 @@ class MapView: MKMapView {
     //MARK: VARIABLES
     var arrayBusiness : [YLPBusiness] = []
     var businessSelectedHandler: BusinessSelectionHandler = nil
+    var shouldAllowRegionChangeUpdates = false
     
     //MARK: LIFE CYCLE
     override func awakeFromNib() {
@@ -69,6 +70,24 @@ extension MapView : MKMapViewDelegate {
         self.businessSelectedHandler!((view.annotation as! Annotation).businessToDisplay)
     }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        if shouldAllowRegionChangeUpdates {
+            // CLEAR ANNOTATIONS
+            self.removeAnnotations(self.getAllAnnotationExceptCurrentLocation())
+            
+            // GET BUSINESSES FROM YELP
+            let centerCoordinate:YLPCoordinate = YLPCoordinate(latitude: self.centerCoordinate.latitude, longitude: self.centerCoordinate.longitude)
+            ServiceManager.shared.getSearchResult(fromCoordinate: centerCoordinate) { (arrBusiness) in
+                DispatchQueue.main.async {
+                    for businessToDisplay in arrBusiness {
+                            let annotation = Annotation(withBusinessInfo: businessToDisplay)
+                            self.addAnnotation(annotation)
+                        }
+                    }
+            }
+        }
+    }
 }
 
 //MARK:- Annotation

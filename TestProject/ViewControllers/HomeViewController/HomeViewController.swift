@@ -35,6 +35,9 @@ class HomeViewController: BaseViewController {
         // GET LOCATION
         LocationService.shared.getLocation { (currentLocation, locationPermissionState) in
             
+            //MARK: SUBSCRIBE FOR MAP REGION CHANGES
+            self.mapViewBusinesses.shouldAllowRegionChangeUpdates = true
+            
             guard locationPermissionState == .ready else {
                 return
             }
@@ -56,6 +59,7 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    //MARK: NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // BUSINESS DETAILS SCREEN

@@ -67,7 +67,7 @@ extension MKMapView {
     func adjustZoomscale(forLocation cord: CLLocationCoordinate2D) {
         let centerCordinate: CLLocationCoordinate2D = cord
         let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(centerCordinate, 200, 200)
-        self.setRegion(region, animated: true)
+        self.setRegion(region, animated: false)
     }
     
     func getAllAnnotationExceptCurrentLocation() -> [MKAnnotation] {
